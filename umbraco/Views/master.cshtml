@@ -1,0 +1,39 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Umbraco Site</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="container">
+        <nav class="navbar navbar-expand navbar-light">
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Content("~/")">Home</a>
+                    <a class="nav-link" href="@Url.Content("~/contact-me")">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        @Html.Partial("BannerImage")
+
+        @RenderBody()  @* This is where content from child views will be injected *@
+    </main>
+
+    <!-- Scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

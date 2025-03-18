@@ -1,0 +1,12 @@
+﻿@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Core.PublishedCache;
+@using Umbraco.Cms.Core.Models.PublishedContent;
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+@{
+    var buttonText = Model.Value<string>("ctaText");
+    var buttonLink = Model.Value<Umbraco.Cms.Core.Models.Link>("ctaUrl");
+}
+<div class="cta-block">
+    <a href="@buttonLink" class="btn btn-primary">@buttonText</a>
+</div>

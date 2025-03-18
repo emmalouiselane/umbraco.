@@ -1,0 +1,36 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Core.PublishedCache;
+@using Umbraco.Cms.Core.Models.PublishedContent;
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedContent>
+@{
+    Layout = "master.cshtml";
+}
+
+<h1>@Model.Value("pageTitle")</h1>
+
+@if (Model != null)
+{
+    var blocks = Model.Value("blockList") as BlockListModel;
+    if (blocks != null)
+    {
+        foreach (var block in blocks)
+        {
+            switch (block.Content.ContentType.Alias)
+            {
+                case "textBlock":
+                    @Html.Partial("TextBlock", block.Content)
+                    break;
+
+                case "imageAndTextBlock":
+                    @Html.Partial("ImageTextBlock", block.Content)
+                    break;
+
+                case "ctaButton":
+                    @Html.Partial("CallToActionBlock", block.Content)
+                    break;
+            } 
+        }
+    }
+}

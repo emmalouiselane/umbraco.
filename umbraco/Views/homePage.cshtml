@@ -1,0 +1,38 @@
+﻿
+@{
+	Layout = "master.cshtml";
+}
+@model umbraco.Models.HomePageViewModel
+
+<!DOCTYPE HTML>
+<html>
+	<body>
+		<!-- Jumbotron, w title -->
+		<div class="jumbotron text-center jumbotron-fluid">
+			<div class="container">
+				<h1 class="display-1">@Model.Title</h1>
+				<p>@Model.DescriptiveText</p>
+			</div>
+		</div>	
+
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				fetch('https://api.spaceflightnewsapi.net/v4/articles/?format=json&limit=10')
+					.then(response => response.json())
+					.then(data => {
+						let articlesContainer = document.getElementById('external-articles');
+						data.results.forEach(article => {
+							let articleElement = document.createElement('div');
+							articleElement.className = 'article';
+							articleElement.innerHTML = `<h3>${article.title}</h3><p>${article.summary}</p>`;
+							articlesContainer.appendChild(articleElement);
+						});
+					});
+			});
+		</script>
+
+		 <div id="external-articles" class="container">
+			<h2>External Articles</h2>
+		</div>
+	</body>
+</html>

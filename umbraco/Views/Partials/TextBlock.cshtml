@@ -1,0 +1,11 @@
+﻿@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Core.PublishedCache;
+@using Umbraco.Cms.Core.Models.PublishedContent;
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<IPublishedElement>
+@{
+    var textContent = Model.Value<string>("textContent");
+}
+<div class="text-block">
+    <p>@textContent</p>
+</div>

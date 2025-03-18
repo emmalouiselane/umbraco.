@@ -1,0 +1,11 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = "master.cshtml";
+}
+
+@using Umbraco.Forms.Web
+@Html.RenderUmbracoFormDependencies(Url)
+
+@await Component.InvokeAsync("RenderForm", new { formId = Guid.Parse("8ebac158-7e61-43ac-bdc1-c419afdd83c1"), 
+                                                 theme = "bootstrap3-horizontal" })

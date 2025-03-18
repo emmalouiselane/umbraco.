@@ -1,0 +1,13 @@
+﻿@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Core.PublishedCache;
+@using Umbraco.Cms.Core.Models.PublishedContent;
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<BlockListItem>
+@{
+    var imageUrl = Model.Content.Value<Umbraco.Cms.Core.Models.MediaWithCrops>("image")?.MediaUrl();
+    var textContent = Model.Content.Value<string>("textBlock");
+}
+<div class="image-text-block">
+    <img src="@imageUrl" alt="Content Image" />
+    <p>@textContent</p>
+</div>

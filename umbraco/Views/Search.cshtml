@@ -1,0 +1,48 @@
+﻿@using Examine;
+@inject IExamineManager ExamineManager
+
+@* @model IEnumerable<Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent> *@
+@{
+    Layout = "master.cshtml";
+}
+
+<h1>Search</h1>
+
+<form method="get" action="/search">
+    <input type="text" name="query" placeholder="Search..." />
+    <button type="submit">Search</button>
+</form>
+
+@* @{
+    var searchQuery = Context.Request.Query["query"].ToString();
+
+    if (!string.IsNullOrEmpty(searchQuery))    
+    {
+        var searcher = ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"];
+        var query = searcher.CreateQuery("content").Field("nodeName", searchQuery);
+        var results = searcher.Search(query);
+
+        if (results.Any())
+        {
+            <div class="searchresults">
+                <p>Your search results for <strong>@searchQuery</strong></p>
+                <ul>
+                    @foreach (var result in results)
+                    {
+                        var content = ContentQuery.Content(result.Id);
+                        if (content != null)
+                        {
+                            <li>
+                                <a href="@content.Url()">@content.Name</a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        }
+        else
+        {
+            <p>No results found.</p>
+        }
+    }
+} *@
